@@ -1481,9 +1481,9 @@ xhp_singleton:
     if (yyextra->include_debug) {
       char line[16];
       sprintf(line, "%lu", (unsigned long)$1.lineno());
-      $$ = "new xhp_" + $1 + "(array(" + $2 + "), array(), __FILE__, " + line + ")";
+      $$ = "new \\xhp_" + $1 + "(array(" + $2 + "), array(), __FILE__, " + line + ")";
     } else {
-      $$ = "new xhp_" + $1 + "(array(" + $2 + "), array())";
+      $$ = "new \\xhp_" + $1 + "(array(" + $2 + "), array())";
     }
   }
 ;
@@ -1493,7 +1493,7 @@ xhp_tag_open:
     pop_state(); // XHP_ATTRS
     push_state(XHP_CHILD_START);
     yyextra->pushTag($1.c_str());
-    $$ = "new xhp_" + $1 + "(array(" + $2 + "), array(";
+    $$ = "new \\xhp_" + $1 + "(array(" + $2 + "), array(";
   }
 ;
 
